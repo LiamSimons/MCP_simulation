@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/simon/CLionProjects/MCP/MCP.c
+MCP.h
+C:/Users/simon/CLionProjects/MCP/MCP.h
+
+C:/Users/simon/CLionProjects/MCP/MCP.h
+stdbool.h
+-
+stdio.h
+-
+stdint-gcc.h
+-
+
