@@ -1,15 +1,16 @@
 //MCP header file ------------------------------------------------------------------------------------------------------
 
+#include "MCP_simulator.h"  //REMOVE THIS IN MPLAB
+
+
 #ifndef MCP_MCP_H
 #define MCP_MCP_H
 
-#endif //MCP_MCP_H
 
 //INCLUDES -------------------------------------------------------------------------------------------------------------
 //#include <xc.h>           //INCLUDE THIS IN MPLAB
-#include <stdio.h>
-#include <stdint.h>
-#include "MCP_simulator.h"  //REMOVE THIS IN MPLAB
+//#include <stdio.h>        //INCLUDE THIS IN MPLAB
+//#include <stdint.h>       //INCLUDE THIS IN MPLAB
 
 //SPI INSTRUCTIONS -----------------------------------------------------------------------------------------------------
 #define 	RESET_MCP				0xC0	//1100 0000
@@ -31,14 +32,6 @@
 #define 	READ_STATUS				0xA0	//1010 0000
 #define 	RX_STATUS				0xB0	//1011 0000
 #define 	BIT_MODIFY				0x05	//0000 0101
-
-//SIMULATION OF THE REGISTERS ON THE PIC18F25K50 -----------------------------------------------------------------------
-typedef struct LATA {       //REMOVE THIS IN MPLAB
-    unsigned char LATA4;    //REMOVE THIS IN MPLAB
-    unsigned char LATA3;    //REMOVE THIS IN MPLAB
-}LATA;                      //REMOVE THIS IN MPLAB
-                            //REMOVE THIS IN MPLAB
-struct LATA LATAbits;       //REMOVE THIS IN MPLAB
 
 
 //STORAGE ON PIC TO STORE THE VALUES READ FROM THE RX BUFFER -----------------------------------------------------------
@@ -85,3 +78,6 @@ uint8_t check_available_tx_buffer();                //returns the number of the 
 //use when interrupt generated -> int pin on pic not yet connected!!!
 void MCP_read_buffer(uint8_t local_address);    //reads the buffers containing the received message
                                                 //local_address = address on pic to store buffer contents
+
+
+#endif //MCP_MCP_H

@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/simon/CLionProjects/MCP/MCP.c" "C:/Users/simon/CLionProjects/MCP/cmake-build-debug/CMakeFiles/MCP.dir/MCP.c.obj"
-  "C:/Users/simon/CLionProjects/MCP/MCP_simulator.c" "C:/Users/simon/CLionProjects/MCP/cmake-build-debug/CMakeFiles/MCP.dir/MCP_simulator.c.obj"
+  "C:/Users/simon/CLionProjects/MCP_simulation/MCP.c" "C:/Users/simon/CLionProjects/MCP_simulation/cmake-build-debug/CMakeFiles/MCP.dir/MCP.c.obj"
+  "C:/Users/simon/CLionProjects/MCP_simulation/MCP_simulator.c" "C:/Users/simon/CLionProjects/MCP_simulation/cmake-build-debug/CMakeFiles/MCP.dir/MCP_simulator.c.obj"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "MSVC")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH

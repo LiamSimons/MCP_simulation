@@ -51,7 +51,7 @@ void MCP_read_rx(char full, char nr) {				//full(starting form SIDH or from D0)
     }
 //    LATAbits.LATA4 = 0;		//start comm
     writeSPI(command);			//write the command for the right buffer and where to start from
-    for(int i = (sizeof(RX_STORAGE)-amount); i==sizeof(RX_STORAGE); i++){
+    for(unsigned int i = (sizeof(RX_STORAGE)-amount); i==sizeof(RX_STORAGE); i++){
         RX_STORAGE[i] = readSPI();
     }
     LATAbits.LATA4 = 1;			//end comm
@@ -316,9 +316,23 @@ void MCP_read_buffer(uint8_t local_address){
 
 //MAIN -----------------------------------------------------------------------------------------------------------------
 int main(){                 //REMOVE THIS IN MPLAB
+    MCP_startup();
+    /*
+    MCP_write(0x99, 0xFF);
+    MCP_write(0x30, 0XFF);
+    MCP_write(0x69, 0x45);
+    signed char x = find_register_index(0x30);
+    */
+    for(unsigned char i = 0x00; i<NR_REGISTERS; i++) {
+        unsigned int value = MCP_read(i);
+        printf("REGISTER %i = %d\n", i+1, value);
+    }
+
+    /*
     MCP_init();             //REMOVE THIS IN MPLAB
     printf("\n");   //REMOVE THIS IN MPLAB
     MCP_send_message(0, 0x00, 0, 8,              //REMOVE THIS IN MPLAB
                      0x00, 0x00, 0x00, 0x00,       //REMOVE THIS IN MPLAB
-                     0x00, 0x00, 0x00, 0x00);      //REMOVE THIS IN MPLAB
+                     0x00, 0x00, 0x00, 0x00);      //REMOVE THIS IN MPLAB*/
+
 }

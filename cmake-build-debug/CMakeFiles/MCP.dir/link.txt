@@ -1,3 +1,0 @@
-"D:\CLion\CLion 2021.1.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\MCP.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\MCP.dir/objects.a @CMakeFiles\MCP.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\MCP.dir/objects.a -Wl,--no-whole-archive -o MCP.exe -Wl,--out-implib,libMCP.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MCP.dir\linklibs.rsp

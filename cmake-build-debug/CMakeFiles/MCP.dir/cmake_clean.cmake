@@ -3,8 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/MCP.dir/MCP_simulator.c.obj"
   "MCP.exe"
   "MCP.exe.manifest"
+  "MCP.lib"
   "MCP.pdb"
-  "libMCP.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

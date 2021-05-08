@@ -6,15 +6,23 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/simon/CLionProjects/MCP/MCP.c
+C:/Users/simon/CLionProjects/MCP_simulation/MCP.c
 MCP.h
-C:/Users/simon/CLionProjects/MCP/MCP.h
+C:/Users/simon/CLionProjects/MCP_simulation/MCP.h
 
-C:/Users/simon/CLionProjects/MCP/MCP.h
-stdbool.h
+C:/Users/simon/CLionProjects/MCP_simulation/MCP.h
+MCP_simulator.h
+C:/Users/simon/CLionProjects/MCP_simulation/MCP_simulator.h
+
+C:/Users/simon/CLionProjects/MCP_simulation/MCP_registers.h
+
+C:/Users/simon/CLionProjects/MCP_simulation/MCP_simulator.h
+stdint.h
 -
 stdio.h
 -
-stdint-gcc.h
+stdlib.h
 -
+MCP_registers.h
+C:/Users/simon/CLionProjects/MCP_simulation/MCP_registers.h
 
