@@ -35,19 +35,12 @@ unsigned char readSPI(void);
 
 //EXTRA FUNCTIONS
 void MCP_startup();
-signed char find_register_index(unsigned char address);
-signed char find_command_index(unsigned char command);
+signed char find_register_index(unsigned char address_dummy);
+signed char find_command_index(unsigned char command_dummy);
+void execute_command(unsigned char command_dummy);
 
-//SPI INSTRUCTION SIMULATIONS
-void SIM_reset();								//resets the device
-uint8_t SIM_read(uint8_t address);				//read out a register of the mcp
-void SIM_read_rx(char full, char nr);			//reads out the chosen receive buffer
-void SIM_write(uint8_t address, uint8_t data);	//write data to a given register
-void SIM_rts(char TXB);							//Request to Send for the chosen transmit buffer
-uint8_t SIM_read_status();						//returns the status register
-uint8_t SIM_rx_status();						//returns the rx register
-void SIM_bit_modify(uint8_t address, uint8_t mask, uint8_t data);
-
+//DEBUGGING
+void print_register_data();
 
 #endif //MCP_MCP_SIMULATOR_H
 

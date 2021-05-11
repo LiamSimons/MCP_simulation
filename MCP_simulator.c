@@ -16,18 +16,19 @@ void writeSPI(unsigned char data){
     //check what the address is - when bytes_to_come==0 it is a command
     //check which command to know how many bytes to come
     //make a function for each spi command
-    if(writes_to_go == 0){
+    if(writes_to_go == 0){                                          //writes_to_go = 0 : first spi which is command
         command = data;
-        signed char index_dummy = find_command_index(command);
-        if(index_dummy == -1) {
+        signed char index_dummy = find_command_index(command);      //find what index the command has
+        if(index_dummy == -1) {                                     //exit to handle command not found
             reads_to_go = 0;
             writes_to_go = 0;
             return;
         }
-        writes_to_go = MCP_spi_expected_writes[index_dummy];
-        reads_to_go = MCP_spi_expected_reads[index_dummy];
+        writes_to_go = MCP_spi_expected_writes[index_dummy];        //search how much writes are expected for this command
+        reads_to_go = MCP_spi_expected_reads[index_dummy];          //same for how many reads
+        execute_command(command);
     }
-    else{
+    else{                                                           //if w_t_g != 0 it is not a command
         signed char index_dummy = find_command_index(command);
         if(index_dummy == -1) return;
         if(writes_to_go == MCP_spi_expected_writes[index_dummy]){
@@ -62,8 +63,11 @@ void writeSPI(unsigned char data){
     }
 }
 unsigned char readSPI(void){
+    //printf("WRITES = %x\nREADS = %x\n", writes_to_go, reads_to_go);
+
     if(reads_to_go != 0) {
-        return MCP_registers_data[address];
+        reads_to_go--;
+        return MCP_registers_data[find_register_index(address)];
     }
 }
 
@@ -90,24 +94,26 @@ signed char find_command_index(unsigned char command_dummy){
 }
 
 
-
-
-
-//SPI INSTRUCTION SIMULATIONS
-void SIM_reset();								//resets the device
-uint8_t SIM_read(uint8_t address);				//read out a register of the mcp
-void SIM_read_rx(char full, char nr);			//reads out the chosen receive buffer
-void SIM_write(uint8_t address, uint8_t data);	//write data to a given register
-void SIM_rts(char TXB);							//Request to Send for the chosen transmit buffer
-uint8_t SIM_read_status();						//returns the status register
-uint8_t SIM_rx_status();						//returns the rx register
-void SIM_bit_modify(uint8_t address, uint8_t mask, uint8_t data);
-
 //STARTUP FUNCTIONS TO INITIALIZE FACTORY DEFAULT OF THE MCP
 void MCP_startup(){
     writes_to_go = 0;
     reads_to_go = 0;
     for(unsigned char i = 0; i<NR_REGISTERS; i++){
         MCP_registers_data[i] = 0x00;
+    }
+    //TO DO : set to config mode
+}
+
+void execute_command(unsigned char command_dummy){
+    if(command_dummy == SIM_RESET_MCP) MCP_startup();
+    if(command_dummy == SIM_READ_RX_BUFFER_0) address = 0x0;
+
+}
+
+
+//DEBUGGING
+void print_register_data(){
+    for(unsigned char i = 0; i<NR_REGISTERS; i++){
+        printf("ACTUAL REGISTER %i = %x\n", i+1, MCP_registers_data[i]);
     }
 }

@@ -132,27 +132,27 @@ void MCP_init(){
     //4.3 Acceptance filter registers
     //RXB1 Filters :
     //Register 4-18 : 6 standard identifier high registers	//RXFxSIDH
-    MCP_write(0x00, 0x00);					//TO DO : What will be our SID
-    MCP_write(0x04, 0x00);					//TO DO : What will be our SID
-    MCP_write(0x08, 0x00);					//TO DO : What will be our SID
-    MCP_write(0x10, 0x00);					//TO DO : What will be our SID
-    MCP_write(0x14, 0x00);					//TO DO : What will be our SID
-    MCP_write(0x18, 0x00);					//TO DO : What will be our SID
+    MCP_write(0x00, 0x01);					//TO DO : What will be our SID
+    MCP_write(0x04, 0x02);					//TO DO : What will be our SID
+    MCP_write(0x08, 0x03);					//TO DO : What will be our SID
+    MCP_write(0x10, 0x04);					//TO DO : What will be our SID
+    MCP_write(0x14, 0x05);					//TO DO : What will be our SID
+    MCP_write(0x18, 0x06);					//TO DO : What will be our SID
     //Register 4-19 : SID + EXIDE + EID						//RXFxSIDL
-    MCP_write(0x01, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x05, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x09, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x11, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x15, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x19, 0x00);					//TO DO : What will be our SID and EID
+    MCP_write(0x01, 0x07);					//TO DO : What will be our SID and EID
+    MCP_write(0x05, 0x08);					//TO DO : What will be our SID and EID
+    MCP_write(0x09, 0x09);					//TO DO : What will be our SID and EID
+    MCP_write(0x11, 0x10);					//TO DO : What will be our SID and EID
+    MCP_write(0x15, 0x11);					//TO DO : What will be our SID and EID
+    MCP_write(0x19, 0x12);					//TO DO : What will be our SID and EID
 
     //RXB0 Masks :
     //Register 4-22 : 2 standard mask high registers		//RXMxSIDH
-    MCP_write(0x20, 0x00);					//TO DO : What will be our SID mask
-    MCP_write(0x24, 0x00);					//TO DO : What will be our SID mask
+    MCP_write(0x20, 0x01);					//TO DO : What will be our SID mask
+    MCP_write(0x24, 0x01);					//TO DO : What will be our SID mask
     //Register 4-23 : SID + EXIDE + EID						//RXMxSIDL
-    MCP_write(0x21, 0x00);					//TO DO : What will be our SID and EID
-    MCP_write(0x25, 0x00);					//TO DO : What will be our SID and EID
+    MCP_write(0x21, 0x01);					//TO DO : What will be our SID and EID
+    MCP_write(0x25, 0x01);					//TO DO : What will be our SID and EID
 
 
     //4.4 Bit time configuration registers
@@ -323,10 +323,18 @@ int main(){                 //REMOVE THIS IN MPLAB
     MCP_write(0x69, 0x45);
     signed char x = find_register_index(0x30);
     */
-    for(unsigned char i = 0x00; i<NR_REGISTERS; i++) {
-        unsigned int value = MCP_read(i);
-        printf("REGISTER %i = %d\n", i+1, value);
+
+    MCP_init();
+    //printf("WRITE\n");
+    //MCP_write(0x01, 0x01);
+
+    for(unsigned char i = 0; i<NR_REGISTERS; i++) {
+        //printf("READ\n");
+        unsigned int value = MCP_read(MCP_registers[i]);
+        printf("MCP_read REGISTER %i = %x\n", i+1, value);
     }
+
+    print_register_data();
 
     /*
     MCP_init();             //REMOVE THIS IN MPLAB
